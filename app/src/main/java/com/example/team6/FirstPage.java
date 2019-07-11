@@ -2,19 +2,19 @@ package com.example.team6;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
+
 
 public class FirstPage extends AppCompatActivity {
 
@@ -31,57 +31,48 @@ public class FirstPage extends AppCompatActivity {
         pro =new ArrayList<>();
         lstv=findViewById(R.id.lst_products);
 
-        String link = "https://api.github.com/repositories";
-       try
-       {
-           String myjson = new Syncdata().execute(link).get();
+        String link = getResources().getString(R.string.link);
+       try{
+           String myjson =new Syncdata().execute(link).get();
 
-           System.out.println("MainActivity :"+myjson);
+           System.out.println("Bhakti JSON:"+myjson);
 
-           JSONObject mainObj = new JSONObject(myjson);
 
-           JSONArray products = mainObj.getJSONArray("products");
+       //    JSONObject mainobj = new JSONObject(myjson);
 
-           for(int i =0;i<products.length();i++)
+          JSONArray products = new JSONArray(myjson);
+
+           for(int i =0 ;i<products.length();i++)
            {
-               JSONObject childObj= products.getJSONObject(i);
-               String name = childObj.getString("title");
+               JSONObject childobj = products.getJSONObject(i);
+               System.out.println("childObj"+i);
+
+               String name =childobj.getString("name");
 
                pro.add(new Products(name));
+
            }
+           System.out.println("Size of Array"+pro.size());
 
-         System.out.println("Size of Arraylist"+pro.size());
-           adpt =new Listadpt(getApplication(),pro);
+           adpt =new Listadpt(getApplicationContext(),pro);
+
            lstv.setAdapter(adpt);
-            //setOnItemClickListener
-          lstv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-              @Override
-              public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
-                  Intent intent = new Intent(FirstPage.this,MainActivity.class);
-                  intent.putExtra("data",pro.get(position));
-                  startActivity(intent);
-              }
-          });
 
 
        }
-
-
        catch (ExecutionException e)
        {
-           Log.e("MainActivity :",e.getMessage());
+           Log.e("bhaktiException",e.getMessage());
        }
+       catch (JSONException e)
+       {
+           Log.e("JsonProblem :",e.getMessage());
+       }
+
        catch (InterruptedException e)
        {
-           Log.e("MainActivity :",e.getMessage());
-       }catch (JSONException e)
-       {
-           Log.e("MainActivity :",e.getMessage());
+           Log.e("ProblemINSyncData :",e.getMessage());
        }
-
-
-
 
     }
 }

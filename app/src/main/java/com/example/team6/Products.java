@@ -7,6 +7,7 @@ public class Products implements Parcelable {
 
 
     String name;
+   String pdesc;
 
 
 
@@ -14,6 +15,7 @@ public class Products implements Parcelable {
     public Products(String name)
     {
         this.name=name;
+        this.pdesc=pdesc;
 
     }
 
@@ -22,6 +24,7 @@ public class Products implements Parcelable {
     protected Products(Parcel in) {
 
         name=in.readString();
+        pdesc=in.readString();
     }
 
     public static final Creator<Products> CREATOR = new Creator<Products>() {
@@ -42,7 +45,13 @@ public class Products implements Parcelable {
     public void setName(String name) {
         this.name = name;
     }
+    public String getPdesc() {
+        return pdesc;
+    }
 
+    public void setPdesc(String pdesc) {
+        this.pdesc = pdesc;
+    }
 
 
     @Override
@@ -53,6 +62,7 @@ public class Products implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
+        dest.writeString(pdesc);
 
 
 
