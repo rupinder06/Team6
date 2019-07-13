@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -55,15 +58,19 @@ public class Listadpt extends BaseAdapter
 
         TextView txtname =convertView.findViewById(R.id.txt_product);
         TextView txtowner=convertView.findViewById(R.id.txtowner);
-       // TextView txtlanguage=convertView.findViewById(R.id.txt_language);
-       // TextView txtowerAvtar=convertView.findViewById(R.id.txt_languageAvtar);
-       // TextView txtdescription=convertView.findViewById(R.id.txt_descption);
+        TextView txtfollowing=convertView.findViewById(R.id.txtfollowing);
+        TextView txtfollowers=convertView.findViewById(R.id.txtfollowers);
+         TextView desc=convertView.findViewById(R.id.desc);
+
+        ImageView img =convertView.findViewById(R.id.profile);
 
         txtname.setText(pro.get(position).getName());
         txtowner.setText(pro.get(position).getOwner());
-       // txtlanguage.setText(pro.get(position).getLanguages_url());
-       // txtowerAvtar.setText(pro.get(position).getOwnerAvatar());
-       // txtdescription.setText(pro.get(position).getDescription());
+        Picasso.get().load(pro.get(position).getAvatar_url()).into(img);
+
+        txtfollowers.setText(pro.get(position).getFollower());
+       txtfollowing.setText(pro.get(position).getFollowing());
+       desc.setText(pro.get(position).getDescription());
 
 
 

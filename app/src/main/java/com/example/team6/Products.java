@@ -7,17 +7,20 @@ public class Products implements Parcelable {
 
 
     String name;
-   String owner,ownerAvatar,languages_url,description;
+   String follower,ownerAvatar,languages_url,description,avatar_url,following;
 
 
 
-    public Products(String name, String languages_url)
+    public Products(String name, String follower, String ownerAvatar,String languages_url,String description,String avatar_url,String following)
     {
         this.name=name;
-        this.owner= owner;
+        this.follower= follower;
         this.ownerAvatar=ownerAvatar;
         this.languages_url= languages_url;
         this.description= description;
+        this.avatar_url=avatar_url;
+        this.following=following;
+
 
 
     }
@@ -27,10 +30,12 @@ public class Products implements Parcelable {
     protected Products(Parcel in) {
 
         name=in.readString();
-        owner=in.readString();
+        follower=in.readString();
         ownerAvatar=in.readString();
         languages_url=in.readString();
         description=in.readString();
+        avatar_url=in.readString();
+        following=in.readString();
 
     }
 
@@ -45,6 +50,29 @@ public class Products implements Parcelable {
             return new Products[size];
         }
     };
+    public String getFollower() {
+        return follower;
+    }
+
+    public void setFollower(String follower) {
+        this.follower = follower;
+    }
+
+    public String getAvatar_url() {
+        return avatar_url;
+    }
+
+    public void setAvatar_url(String avatar_url) {
+        this.avatar_url = avatar_url;
+    }
+
+    public String getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(String following) {
+        this.following = following;
+    }
     public String getOwnerAvatar() {
         return ownerAvatar;
     }
@@ -61,11 +89,11 @@ public class Products implements Parcelable {
         this.languages_url = languages_url;
     }
     public String getOwner() {
-        return owner;
+        return follower;
     }
 
     public void setOwner(String owner) {
-        this.owner = owner;
+        this.follower = owner;
     }
 
     public String getDescription() {
@@ -95,10 +123,12 @@ public class Products implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
-        dest.writeString(owner);
+        dest.writeString(follower);
         dest.writeString(ownerAvatar);
         dest.writeString(description);
         dest.writeString(languages_url);
+        dest.writeString(avatar_url);
+        dest.writeString(following);
 
 
 
