@@ -3,8 +3,11 @@ package com.example.team6;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -42,14 +45,19 @@ public class FirstPage extends AppCompatActivity {
 
           JSONArray products = new JSONArray(myjson);
 
-           for(int i =0 ;i<products.length();i++)
+           for(int i =0 ;i<30;i++)
            {
                JSONObject childobj = products.getJSONObject(i);
                System.out.println("childObj"+i);
 
                String name =childobj.getString("name");
+              // String owner =childobj.getJSONObject("owner").getString("login");
+              // String ownerAvatar = childobj.getJSONObject("owner").getString("avatar_url");
+              String languages_url =childobj.getString("languages_url");
+               //String description=childobj.getString("description");
 
-               pro.add(new Products(name));
+
+               pro.add(new Products(name,languages_url));
 
            }
            System.out.println("Size of Array"+pro.size());
@@ -57,6 +65,17 @@ public class FirstPage extends AppCompatActivity {
            adpt =new Listadpt(getApplicationContext(),pro);
 
            lstv.setAdapter(adpt);
+           lstv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+               @Override
+               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                   Intent i = new Intent(FirstPage.this,DataActivity.class);
+
+                   i.putExtra("data",pro.get(position));
+                   startActivity(i);
+
+               }
+           });
 
 
        }

@@ -54,7 +54,16 @@ public class Listadpt extends BaseAdapter
         }
 
         TextView txtname =convertView.findViewById(R.id.txt_product);
+        TextView txtowner=convertView.findViewById(R.id.txtowner);
+       // TextView txtlanguage=convertView.findViewById(R.id.txt_language);
+       // TextView txtowerAvtar=convertView.findViewById(R.id.txt_languageAvtar);
+       // TextView txtdescription=convertView.findViewById(R.id.txt_descption);
+
         txtname.setText(pro.get(position).getName());
+        txtowner.setText(pro.get(position).getOwner());
+       // txtlanguage.setText(pro.get(position).getLanguages_url());
+       // txtowerAvtar.setText(pro.get(position).getOwnerAvatar());
+       // txtdescription.setText(pro.get(position).getDescription());
 
 
 
