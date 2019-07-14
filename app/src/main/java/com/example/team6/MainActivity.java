@@ -26,15 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
+        logo2 = findViewById(R.id.imageView);
 
         getSupportActionBar().hide();
-
+        Animation ani = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate);
+        ani.setDuration(3000);
 
 
 
         logolauncher logolauncher =new logolauncher();
-
+        logo2.setAnimation(ani);
         logolauncher.start();
 
     }
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             try{
 
 
-                sleep(1000*5);
+                sleep(1000*4);
             }
             catch (InterruptedException e)
             {
