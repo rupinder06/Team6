@@ -57,21 +57,15 @@ public class Listadpt extends BaseAdapter
         }
 
         TextView txtname =convertView.findViewById(R.id.txt_product);
-        TextView txtowner=convertView.findViewById(R.id.txtowner);
-        TextView txtfollowing=convertView.findViewById(R.id.txtfollowing);
-        TextView txtfollowers=convertView.findViewById(R.id.txtfollowers);
-         TextView desc=convertView.findViewById(R.id.desc);
+        TextView description = convertView.findViewById(R.id.txtdesc);
 
-        ImageView img =convertView.findViewById(R.id.profile);
+
+
+        ImageView img =convertView.findViewById(R.id.img_product);
 
         txtname.setText(pro.get(position).getName());
-        txtowner.setText(pro.get(position).getOwner());
-        Picasso.get().load(pro.get(position).getAvatar_url()).into(img);
-
-        txtfollowers.setText(pro.get(position).getFollower());
-       txtfollowing.setText(pro.get(position).getFollowing());
-       desc.setText(pro.get(position).getDescription());
-
+       // description.setText(pro.get(position).getDescription());
+       Picasso.get().load(pro.get(position).getAvatar_url()).into(img);
 
 
         return convertView;

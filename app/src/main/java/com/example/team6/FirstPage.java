@@ -42,23 +42,21 @@ public class FirstPage extends AppCompatActivity {
 
 
        //    JSONObject mainobj = new JSONObject(myjson);
+          // JSONArray products = mainObj.getJSONArray("products");
 
-          JSONArray products = new JSONArray(myjson);
+
+           JSONArray products = new JSONArray(myjson);
 
            for(int i =0 ;i<30;i++)
            {
                JSONObject childobj = products.getJSONObject(i);
                System.out.println("childObj"+i);
                String name =childobj.getString("name");
-               String languages_url =childobj.getString("languages_url");
-               String following =childobj.getString("");
-               String follower =childobj.getString("follower");
-               String ownerAvatar =childobj.getString("ownerAvatar");
-               String description = childobj.getString("description");
-               String avatar_url =childobj.getString("avatar_url");
+               String avatar_url=childobj.getJSONObject("owner").getString("avatar_url");
+               String description=childobj.getString("description");
 
 
-               pro.add(new Products(name,follower,ownerAvatar,languages_url,description,avatar_url,following));
+               pro.add(new Products(name,avatar_url,description));
 
            }
            System.out.println("Size of Array"+pro.size());
@@ -66,15 +64,13 @@ public class FirstPage extends AppCompatActivity {
            adpt =new Listadpt(getApplicationContext(),pro);
 
            lstv.setAdapter(adpt);
-           lstv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+          lstv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                @Override
                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                    Intent i = new Intent(FirstPage.this,DataActivity.class);
-
                    i.putExtra("data",pro.get(position));
                    startActivity(i);
-
                }
            });
 
