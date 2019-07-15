@@ -7,30 +7,28 @@ public class Products implements Parcelable {
 
 
     String name;
-   String avatar_url,description;
+   String avatar_url,description,followers_url;
 
 
 
-    public Products(String name, String avatar_url,String description)
+    public Products(String name, String avatar_url, String description, String followers_url)
     {
         this.name=name;
-        this.description=description;
+
         this.avatar_url=avatar_url;
-
-
-
+        this.description=description;
+        this.followers_url=followers_url;
 
     }
-
-
 
 
     protected Products(Parcel in) {
 
         name=in.readString();
-        description=in.readString();
-        avatar_url=in.readString();
 
+        avatar_url=in.readString();
+        description=in.readString();
+        followers_url=in.readString();
     }
 
     public static final Creator<Products> CREATOR = new Creator<Products>() {
@@ -45,6 +43,13 @@ public class Products implements Parcelable {
         }
     };
 
+    public String getFollowers_url() {
+        return followers_url;
+    }
+
+    public void setFollowers_url(String followers_url) {
+        this.followers_url = followers_url;
+    }
 
     public String getDescription() {
         return description;
@@ -86,6 +91,7 @@ public class Products implements Parcelable {
 
         dest.writeString(avatar_url);
         dest.writeString(description);
+        dest.writeString(followers_url);
 
 
     }

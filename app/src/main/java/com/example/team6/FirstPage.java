@@ -26,6 +26,7 @@ public class FirstPage extends AppCompatActivity {
     ListView lstv;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,42 +36,46 @@ public class FirstPage extends AppCompatActivity {
         lstv=findViewById(R.id.lst_products);
 
         String link = getResources().getString(R.string.link);
+        //String link =getResources().getString(R.string.link);
+
        try{
            String myjson =new Syncdata().execute(link).get();
 
            System.out.println("Bhakti JSON:"+myjson);
 
 
-       //    JSONObject mainobj = new JSONObject(myjson);
-          // JSONArray products = mainObj.getJSONArray("products");
+        // JSONObject mainobj = new JSONObject(myjson);
+         //  JSONArray products = mainobj.getJSONArray("products");
 
 
            JSONArray products = new JSONArray(myjson);
 
-           for(int i =0 ;i<30;i++)
+
+           for(int i =0;i<=30;i++)
            {
                JSONObject childobj = products.getJSONObject(i);
-               System.out.println("childObj"+i);
-               String name =childobj.getString("name");
-               String avatar_url=childobj.getJSONObject("owner").getString("avatar_url");
-               String description=childobj.getString("description");
+               System.out.println("childObj" + i);
+               String name = childobj.getString("name");
+               String avatar_url = childobj.getJSONObject("owner").getString("avatar_url");
+               String followers_url = childobj.getJSONObject("owner").getString("followers_url");
+               String description =childobj.getString("description");
 
 
-               pro.add(new Products(name,avatar_url,description));
+               pro.add(new Products(name, avatar_url,description,followers_url));
 
            }
-           System.out.println("Size of Array"+pro.size());
+           System.out.println("Size of Array" + pro.size());
 
-           adpt =new Listadpt(getApplicationContext(),pro);
+           adpt = new Listadpt(getApplicationContext(), pro);
 
            lstv.setAdapter(adpt);
 
           lstv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                @Override
                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                   Intent i = new Intent(FirstPage.this,DataActivity.class);
-                   i.putExtra("data",pro.get(position));
-                   startActivity(i);
+                   Intent in = new Intent(FirstPage.this,DataActivity.class);
+                   in.putExtra("data",pro.get(position));
+                   startActivity(in);
                }
            });
 
@@ -91,4 +96,5 @@ public class FirstPage extends AppCompatActivity {
        }
 
     }
+
 }

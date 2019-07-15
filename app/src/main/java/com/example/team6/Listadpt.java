@@ -56,17 +56,19 @@ public class Listadpt extends BaseAdapter
             convertView = inflater.inflate(R.layout.lstitem,parent,false);
         }
 
-        TextView txtname =convertView.findViewById(R.id.txt_product);
-        TextView description = convertView.findViewById(R.id.txtdesc);
+        TextView txtname =convertView.findViewById(R.id.txtname);
+
+        //TextView description = convertView.findViewById(R.id.txtdesc);
+
 
 
 
         ImageView img =convertView.findViewById(R.id.img_product);
 
-        txtname.setText(pro.get(position).getName());
-       // description.setText(pro.get(position).getDescription());
-       Picasso.get().load(pro.get(position).getAvatar_url()).into(img);
 
+        txtname.setText(pro.get(position).getName());
+       Picasso.get().load(pro.get(position).getAvatar_url()).into(img);
+       // description.setText(pro.get(position).getDescription());
 
         return convertView;
     }
