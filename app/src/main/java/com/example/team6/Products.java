@@ -7,17 +7,30 @@ public class Products implements Parcelable {
 
 
     String name;
-   String avatar_url,description,followers_url;
+   String avatar_url,description,followers_url,following_url,login;
 
 
 
-    public Products(String name, String avatar_url, String description, String followers_url)
+    public Products(String name, String avatar_url, String description, String followers_url,String following_url,String login)
     {
         this.name=name;
-
         this.avatar_url=avatar_url;
         this.description=description;
         this.followers_url=followers_url;
+        this.following_url=following_url;
+        this.login=login;
+
+
+
+    }
+    public Products( String followers_url, String avatar_url)
+    {
+
+
+        this.followers_url=followers_url;
+        this.avatar_url=avatar_url;
+
+
 
     }
 
@@ -29,6 +42,8 @@ public class Products implements Parcelable {
         avatar_url=in.readString();
         description=in.readString();
         followers_url=in.readString();
+        following_url=in.readString();
+        login=in.readString();
     }
 
     public static final Creator<Products> CREATOR = new Creator<Products>() {
@@ -67,6 +82,21 @@ public class Products implements Parcelable {
         this.avatar_url = avatar_url;
     }
 
+    public String getFollowing_url() {
+        return following_url;
+    }
+
+    public void setFollowing_url(String following_url) {
+        this.following_url = following_url;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
     public String getName() {
         return name;
@@ -92,6 +122,8 @@ public class Products implements Parcelable {
         dest.writeString(avatar_url);
         dest.writeString(description);
         dest.writeString(followers_url);
+        dest.writeString(following_url);
+        dest.writeString(login);
 
 
     }

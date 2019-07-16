@@ -2,21 +2,23 @@ package com.example.team6;
 
 import android.os.AsyncTask;
 
-import java.util.BitSet;
+
 
 public class Syncdata extends AsyncTask<String, Void, String> {
 
 
-   protected void onpreExecute()
-   {
-       super.onPreExecute();
-   }
-   protected void onPostExcute(String s)
-   {
-       super.onPostExecute(s);
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
 
-       System.out.println(s);
-   }
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+
+        System.out.println(s);
+
+    }
 
 
 

@@ -58,10 +58,12 @@ public class FirstPage extends AppCompatActivity {
                String name = childobj.getString("name");
                String avatar_url = childobj.getJSONObject("owner").getString("avatar_url");
                String followers_url = childobj.getJSONObject("owner").getString("followers_url");
+               String login = childobj.getJSONObject("owner").getString("login");
+               String following_url = childobj.getJSONObject("owner").getString("following_url");
                String description =childobj.getString("description");
 
 
-               pro.add(new Products(name, avatar_url,description,followers_url));
+               pro.add(new Products(name, avatar_url,description,followers_url,following_url,login));
 
            }
            System.out.println("Size of Array" + pro.size());
