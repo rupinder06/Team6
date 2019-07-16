@@ -10,77 +10,82 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="56dp"
         android:paddingLeft="24dp"
+        android:paddingTop="56dp"
         android:paddingRight="24dp">
 
         <ImageView
+            android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:id="@+id/profile"
-            android:layout_gravity="center_horizontal"/>
+            android:baselineAligned="false" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="NAME OF OWNER:"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:text="NAME OF OWNER:" />
+
         <TextView
+            android:id="@+id/txtlogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:id="@+id/txtlogin"
             android:layout_marginBottom="8dp"
             android:text="demo" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="NUMBER OF FOLLOW ARE:"
-            android:inputType="text" />
+            android:inputType="text"
+            android:text="NUMBER OF FOLLOW ARE:" />
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:id="@+id/txtfollow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:inputType="text" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="NUMBER OF FOLLOWING ARE:"
-            android:inputType="text" />
+            android:inputType="text"
+            android:text="NUMBER OF FOLLOWING ARE:" />
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:id="@+id/txtfollowing"
-            android:inputType="text" />
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:id="@+id/txtdesc"
             android:inputType="text" />
+
+        <TextView
+            android:id="@+id/txtdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:inputType="text" />
+
         <Button
+            android:id="@+id/btngo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btngo"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Show Followers"/>
-
-
-
-
+            android:text="Show Followers" />
 
 
     </LinearLayout>
